@@ -27,6 +27,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 return; // Permite que o link funcione normalmente
             }
 
+            // Para botões "QUERO PARTICIPAR" e "GARANTIR MINHA VAGA"
+            if (this.id === 'nav-cta' || this.id === 'hero-cta') {
+                e.preventDefault();
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+
+                // Rola até a seção de preços
+                const pricingSection = document.getElementById('pricing');
+                if (pricingSection) {
+                    pricingSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                return;
+            }
+
             e.preventDefault();
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
